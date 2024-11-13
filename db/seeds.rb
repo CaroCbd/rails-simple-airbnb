@@ -1,9 +1,20 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+puts "Create 5 flats"
+
+NAMES = ['Light & Spacious Garden Flat in ', 'Light & Small Flat in ', 'Big house in Rennes in', 'Great place to stay in ', 'Super nice appartement in ']
+
+PRICES = [34, 88, 99, 29, 110]
+
+GUESTS = [1, 2, 3, 4, 5, 6]
+
+5.times do
+  Flat.create!(
+    name: NAMES.sample,
+    address: '10 Clifton Gardens W9 1DT',
+    description: 'A lovely summer feel for this spacious garden flat. Two double bedrooms, open plan living area, large kitchen and a beautiful conservatory',
+    price_per_night: PRICES.sample,
+    number_of_guests: GUESTS.sample
+  )
+puts "New flat created"
+end
+
+puts "#{Flat.count} flats created"
